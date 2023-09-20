@@ -14,10 +14,10 @@ spec:
         url: https://kubernetes.default.svc
         namespace: argocd
         repoURL: https://github.com/Tomelin/kubernetes.git
-      - cluster: hashicorp
-        url: https://kubernetes.default.svc
-        namespace: vault
-        repoURL: https://github.com/Tomelin/kubernetes.git
+      # - cluster: hashicorp
+      #   url: https://kubernetes.default.svc
+      #   namespace: vault
+      #   repoURL: https://github.com/Tomelin/kubernetes.git
   template:
     metadata:
       name: '{{cluster}}'
