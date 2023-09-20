@@ -1,0 +1,44 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: core
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: argoproj
+        url: https://kubernetes.default.svc
+        namespace: argocd
+        repo: https://argoproj.github.io/argo-helm
+  template:
+    metadata:
+      name: '{{cluster}}'
+    spec:
+      destination:
+        name: ''
+        namespace: '{{namespace}}'
+        server: 'https://kubernetes.default.svc'
+      source:
+        path: 'deployment/gitops/application/{{cluster}}'
+        repoURL: '{{repo}}'
+        targetRevision: HEAD
+        directory:
+          recurse: true
+      sources: []
+      project: core
+      syncPolicy:
+        retry:
+          limit: 2
+          backoff:
+            duration: 5s
+            maxDuration: 3m0s
+            factor: 2
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true
