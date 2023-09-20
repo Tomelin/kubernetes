@@ -24,7 +24,7 @@ spec:
       - name: "server.ha.enabled"
         value: "true"
       - name: "server.ha.replicas"
-        value: "2"
+        value: "3"
       - name: "injector.enabled"
         value: "true"
       - name: "global.enabled"
