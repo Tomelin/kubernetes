@@ -30,7 +30,7 @@ spec:
       - name: "global.enabled"
         value: "true"
       - name: "standalone.enabled"
-        value: "false"
+        value: "true"
       - name: "csi.enabled"
         value: "true"
   sources: []
