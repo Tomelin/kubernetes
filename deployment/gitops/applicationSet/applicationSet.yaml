@@ -13,7 +13,7 @@ spec:
       - cluster: argoproj
         url: https://kubernetes.default.svc
         namespace: argocd
-        repo: https://argoproj.github.io/argo-helm
+        repoURL: https://github.com/Tomelin/kubernetes.git
   template:
     metadata:
       name: '{{cluster}}'
@@ -24,7 +24,7 @@ spec:
         server: 'https://kubernetes.default.svc'
       source:
         path: 'deployment/gitops/application/{{cluster}}'
-        repoURL: '{{repo}}'
+        repoURL: '{{repoURL}}'
         targetRevision: HEAD
         directory:
           recurse: true
