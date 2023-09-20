@@ -17,6 +17,8 @@ spec:
     chart: argo-cd
     helm:
       parameters:
+      - name: installCRDs
+        value: "true"
       - name: "oidc.config"
         value: |
           name: Keycloak
