@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: argoproj-cd
+    namespace: argoproj
     server: 'https://kubernetes.default.svc'
   source:
     path: ''
