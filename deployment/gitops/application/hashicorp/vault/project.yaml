@@ -10,7 +10,7 @@ spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
-  description: argoproj contains application type argocd, argoworkflow
+  description: hashicorp contains application type vault
   destinations:
   - name: in-cluster
     namespace: '*'
