@@ -15,6 +15,15 @@ spec:
     repoURL: 'https://argoproj.github.io/argo-helm'
     targetRevision: 5.46.6
     chart: argo-cd
+    helm:
+      parameters:
+      - name: "oidc.config"
+        value: |
+          name: Keycloak
+          issuer: https://auth.tomelintech.com.br/realms/tomelinTech
+          clientID: argocd
+          clientSecret: $oidc.keycloak.clientSecret
+          requestedScopes: ["openid", "profile", "email"]
   sources: []
   project: argoproj
   syncPolicy:
