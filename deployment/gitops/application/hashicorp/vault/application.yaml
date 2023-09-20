@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  destination:
+    name: ''
+    namespace: vault
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ''
+    repoURL: 'https://helm.releases.hashicorp.com'
+    targetRevision: 0.25.0
+    chart: vault
+    helm:
+      parameters:
+      - name: installCRDs
+        value: "true"
+      - name: "server.dev.enabled"
+        value: "true"
+      - name: "server.ha.enabled"
+        value: "true"
+      - name: "server.ha.replicas"
+        value: "2"
+      - name: "injector.enabled"
+        value: "true"
+      - name: "global.enabled"
+        value: "true"
+      - name: "standalone.enabled"
+        value: "false"
+  sources: []
+  project: hashicorp
+  syncPolicy:
+    automated:
+      prune: true 
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

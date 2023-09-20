@@ -1,0 +1,26 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: hashicorp
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: argoproj contains application type argocd, argoworkflow
+  destinations:
+  - name: in-cluster
+    namespace: '*'
+    server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  sourceRepos:
+  - https://github.com/Tomelin/kubernetes.git
+  - https://helm.releases.hashicorp.com
+  orphanedResources:
+    warn: false
+  
