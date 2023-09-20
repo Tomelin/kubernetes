@@ -31,6 +31,8 @@ spec:
         value: "true"
       - name: "standalone.enabled"
         value: "false"
+      - name: "csi.enabled"
+        value: "true"
   sources: []
   project: hashicorp
   syncPolicy:
