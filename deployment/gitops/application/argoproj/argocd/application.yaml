@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: argocd
+    namespace: argocd2
     server: 'https://kubernetes.default.svc'
   source:
     path: ''
@@ -23,7 +23,7 @@ spec:
           issuer: https://auth.tomelintech.com.br/realms/tomelinTech
           clientID: argocd
           clientSecret: $oidc.keycloak.clientSecret
-          requestedScopes: ["openid", "profile", "email"]
+          requestedScopes: ["openid", "profile", "email", "teste2"]
   sources: []
   project: argoproj
   syncPolicy:
